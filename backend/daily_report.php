@@ -1,6 +1,6 @@
 <?php
 // DB config
-$db = new mysqli('localhost', 'DB_USER', 'DB_PASS', 'DB_NAME');
+$db = new mysqli('localhost', 'root', '', 'leadx');
 if ($db->connect_error) die('DB connection failed');
 
 // Get today's leads

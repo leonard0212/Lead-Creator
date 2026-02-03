@@ -32,7 +32,7 @@ export default function Form({ initialData, onBack }) {
         );
       });
     }
-    const res = await fetch("https://yourdomain.com/api.php", {
+    const res = await fetch("api.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...fields, location: loc }),
@@ -43,16 +43,16 @@ export default function Form({ initialData, onBack }) {
   };
 
   return (
-    <form className="space-y-4 p-4" onSubmit={handleSubmit}>
-      <input name="name" value={fields.name} onChange={handleChange} placeholder="Name" className="input" />
-      <input name="email" value={fields.email} onChange={handleChange} placeholder="Email" className="input" />
-      <input name="phone" value={fields.phone} onChange={handleChange} placeholder="Phone" className="input" />
-      <input name="company" value={fields.company} onChange={handleChange} placeholder="Company" className="input" />
-      <textarea name="notes" value={fields.notes} onChange={handleChange} placeholder="Notes" className="input" />
-      <input name="location" value={fields.location} onChange={handleChange} placeholder="Location (auto)" className="input" />
-      <button className="btn" type="submit" disabled={loading}>{loading ? "Saving..." : "Submit"}</button>
-      <button className="btn" type="button" onClick={onBack}>Back</button>
-      {msg && <div>{msg}</div>}
+    <form className="space-y-4 w-full" onSubmit={handleSubmit}>
+      <input name="name" value={fields.name} onChange={handleChange} placeholder="Nume" className="input text-lg" autoComplete="off" />
+      <input name="email" value={fields.email} onChange={handleChange} placeholder="Email" className="input text-lg" autoComplete="off" />
+      <input name="phone" value={fields.phone} onChange={handleChange} placeholder="Telefon" className="input text-lg" autoComplete="off" />
+      <input name="company" value={fields.company} onChange={handleChange} placeholder="Companie" className="input text-lg" autoComplete="off" />
+      <textarea name="notes" value={fields.notes} onChange={handleChange} placeholder="Note" className="input text-lg" rows={2} />
+      <input name="location" value={fields.location} onChange={handleChange} placeholder="Locație (auto)" className="input text-lg" autoComplete="off" />
+      <button className="btn text-lg py-3" type="submit" disabled={loading}>{loading ? "Se salvează..." : "Salvează"}</button>
+      <button className="btn text-lg py-3 bg-gray-400 hover:bg-gray-500" type="button" onClick={onBack}>Înapoi</button>
+      {msg && <div className="text-center text-green-700 font-semibold mt-2">{msg}</div>}
     </form>
   );
 }
